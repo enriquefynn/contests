@@ -71,6 +71,8 @@ main()
 			for (int j = 0; j < y; ++j)
 				maxi=max(maxi, f(i,j));
 		cout << maxi << endl;
+		if (n)
+			cout << endl;
 		y = 0;
 	}
 }
