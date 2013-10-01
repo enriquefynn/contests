@@ -25,9 +25,19 @@ struct pto
 	pto(double _x, double _y){ x = _x; y = _y;}
 };
 
+int x, y;
+bool grid[30][30];
 int f(int i, int j)
 {
-	if (
+	if ((i < 0) || (i > x) || (j < 0) || (j > y))
+		return 0;
+	if (grid[i][j])
+	{
+		grid[i][j] = false;
+		return 1 + f(i-1, j-1) + f(i, j-1) + f(i+1, j-1) + f(i-1, j) + f(i+1, j) + f(i-1, j+1) + f(i, j+1) + f(i+1, j+1); 
+	}
+	else
+		return 0;
 }
 
 
@@ -37,20 +47,31 @@ main()
 	int n;
 	string s;
 	cin >> n;
-	bool grid[30][30];
+	getline(cin, s);
+	getline(cin, s);
 	while(n--)
 	{
-		int y = 0;
+		bool first = false;
 		while(1)
 		{
 			getline(cin, s);
-			if (s == "\n")
+			if (s == "")
 				break;
-			for (int i = 0; i < y; ++i)
-				for (int j = 0; j < s.size(); ++j)
-					grid[i][j] = (s[i] == '1');
+			if (!first)
+			{
+				x = s.size();
+				first = true;
+			}
+			for (int j = 0; j < s.size(); ++j)
+				grid[y][j] = (s[j] == '1');
+			++y;
 		}
-
+		int maxi = 0;
+		for (int i = 0; i < x; ++i)
+			for (int j = 0; j < y; ++j)
+				maxi=max(maxi, f(i,j));
+		cout << maxi << endl;
+		y = 0;
 	}
 }
 
