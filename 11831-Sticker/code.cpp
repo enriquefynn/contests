@@ -112,7 +112,7 @@ main()
 							}
 						break;
 						case 'L':
-							if (px+1 > x || grid[px+1][py] == '#')
+							if (px+1 >= x || grid[px+1][py] == '#')
 								break;
 							switch(grid[px+1][py])
 							{
@@ -130,7 +130,7 @@ main()
 							}
 						break;
 						case 'S':
-							if (py+1 > y || grid[px][py+1] == '#')
+							if (py+1 >= y || grid[px][py+1] == '#')
 								break;
 							switch(grid[px][py+1])
 							{
