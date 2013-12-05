@@ -2,7 +2,6 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
-#include <bitset>
 #include <vector>
 #include <algorithm>
 #include <map>
@@ -26,36 +25,29 @@ struct pto
 	pto(double _x, double _y){ x = _x; y = _y;}
 };
 
-bitset<10000> bs;
-main()
+int main()
 {
-	int k, m, tmp, n, mi;
+	char c;
+	int cnt;
 	bool flag;
-	while(cin >> k >> m, k)
+	while(c = getchar())
 	{
-		bs = 0;
-		flag = true;
-		for (int i = 0; i < k; ++i)
-		{
-			cin >> tmp;
-			bs[tmp] = true;
-		}
-		for (int i = 0; i < m; ++i)
-		{
-			cin >> n >> mi;
-			int mmin = 0;
-			for (int j = 0; j < n; ++j)
-			{
-				cin >> tmp;
-				if (bs[tmp])
-					++mmin;
-			}
-			if (mmin < mi)
-				flag = false;
-		}
-		if (flag)
-			cout << "yes\n";
-		else
-			cout << "no\n";
+		if (c == 'E')
+			break;
+		cnt = flag = 1;
+		if(c == '1') 
+			flag = 0;
+		while((c = getchar()) != '\n') 
+			cnt++;
+		if(cnt == 1) 
+			cout << cnt + flag << endl;
+		else if(cnt < 10) 
+			cout << 3 << endl;
+		else 
+			cout << 4 << endl;
 	}
+return 0;
 }
+
+
+

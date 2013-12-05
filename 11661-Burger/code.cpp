@@ -2,9 +2,9 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
-#include <bitset>
 #include <vector>
 #include <algorithm>
+#include <climits>
 #include <map>
 #include <set>
 #define EPS 0.0000000000000001
@@ -26,36 +26,39 @@ struct pto
 	pto(double _x, double _y){ x = _x; y = _y;}
 };
 
-bitset<10000> bs;
 main()
 {
-	int k, m, tmp, n, mi;
-	bool flag;
-	while(cin >> k >> m, k)
+	int l, mini;
+	string s;
+	while(cin >> l, l)
 	{
-		bs = 0;
-		flag = true;
-		for (int i = 0; i < k; ++i)
+		cin >> s;
+		int d, r;
+		d = r = -1;
+		mini = INT_MAX;
+		for (int i = 0; i < l; ++i)
 		{
-			cin >> tmp;
-			bs[tmp] = true;
-		}
-		for (int i = 0; i < m; ++i)
-		{
-			cin >> n >> mi;
-			int mmin = 0;
-			for (int j = 0; j < n; ++j)
+			if (s[i] == 'Z')
 			{
-				cin >> tmp;
-				if (bs[tmp])
-					++mmin;
+				mini = 0;
+				break;
 			}
-			if (mmin < mi)
-				flag = false;
+			if (s[i] == 'R')
+			{
+				r = i;
+				if (d != -1)
+					mini = min(mini, abs(r - d));
+			}
+			else if (s[i] == 'D')
+			{
+				d = i;
+				if (r != -1)
+					mini = min(mini, abs(r - d));
+			}
 		}
-		if (flag)
-			cout << "yes\n";
-		else
-			cout << "no\n";
+		cout << mini << endl;
 	}
 }
+
+
+
