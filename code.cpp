@@ -27,4 +27,5 @@ struct pto
 
 int main()
 {
+	vector<int> v;
 }
