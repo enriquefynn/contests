@@ -27,5 +27,21 @@ struct pto
 
 int main()
 {
-	
+	int aux, m, n, dp[50002][7];
+	cin >> m >> n;
+	for (int i = 0; i <= m+2; ++i)
+			dp[i][0] = 0;
+	for (int i = 0; i <= n+2; ++i)
+			dp[0][i] = 0;
+	for (int i = 1; i <= m; ++i)
+	{
+		for (int j = 1; j <=n; ++j)
+		{
+			cin >> aux;
+			dp[i][j] = max(dp[i][j-1], dp[i-1][j]) + aux;
+		}
+	}
+	for (int i = 1; i <= m; ++i)
+		cout << dp[i][n] << ' ';
+	cout << endl;
 }
