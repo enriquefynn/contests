@@ -27,17 +27,23 @@ struct pto
 
 int main()
 {
-    int n, c = 0, cri = 0;
-    cin >> n;
-    while(n--)
+    int v[1000000], n, t, c, C;
+    C = 0;
+    cin >> n >> t >> c;
+    forid(n)
+        cin >> v[i];
+    int p = c;
+    forid(n)
     {
-        int p;
-        cin >> p;
-        if (p == -1 && c <= 0)
-            ++cri;
-        c+=p;
-        if (c < 0)
-            c = 0;
+        if (v[i] > t)
+            p = c;
+        else
+        {
+            --p;
+            if (p <= 0)
+                ++C;
+        }
     }
-    cout << cri << endl;
+hell:
+    cout << C << endl;
 }
