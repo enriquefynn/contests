@@ -54,9 +54,7 @@ int main()
 	for (int i = 0; i < n; ++i)
 		parent[i] = -1;
 	while(cin >> a >> b >> p)
-	{
 		g.push_back(make_pair(p, make_pair(a, b)));
-	}
 	sort(g.begin(), g.end());
 	for (int i = 0; i < g.size(); ++i)
 	{

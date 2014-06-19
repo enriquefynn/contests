@@ -15,6 +15,7 @@ int main()
     int p = 0;
     for (int i = 0; i < n; ++i)
     {
+        pd[p^1][0] = 0;
         for (int j = 1; j <= capacidade; ++j)
         {
             if (j >= peso[i])
