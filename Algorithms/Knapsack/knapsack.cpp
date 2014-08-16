@@ -23,10 +23,9 @@ int main()
             else
                 pd[p^1][j] = pd[p][j];
         }
-        p ^=1;
+        p ^= 1;
         for (int j = 0; j <= capacidade; ++j)
             cout << pd[p][j] << ' ';
         cout << endl;
-
     }
 }
