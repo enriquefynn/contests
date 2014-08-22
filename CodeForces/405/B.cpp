@@ -27,4 +27,10 @@ struct pto
 
 int main()
 {
+
 }
+
+
+
+
+

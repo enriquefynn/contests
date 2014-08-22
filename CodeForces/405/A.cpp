@@ -27,23 +27,19 @@ struct pto
 
 int main()
 {
-	int ms, n, nd, cap, b;
-	cin >> ms >> n >> nd >> cap;
-	b = 0;
-	int sec;
-	while(n > 0)
-	{
-		++b;
-		sec = 1;
-		if (nd)
-		{
-			while ((sec < ms) && nd)
-			{
-				--nd;
-				++sec;
-			}
-		}
-		n-= cap*sec;
-	}
-	cout << b << endl;
+    int n;
+    int v[1000];
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+        cin >> v[i];
+    sort(v, v+n);
+    for (int i = 0; i < n; ++i)
+        cout << v[i] << ' ';
 }
+
+
+
+
+
+
+
