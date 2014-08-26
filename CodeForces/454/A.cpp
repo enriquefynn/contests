@@ -2,7 +2,6 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
 #include <vector>
 #include <algorithm>
 #include <map>
@@ -12,8 +11,6 @@
 #define forid(N) for(int i = 0; i < N; ++i)
 #define forj(N) for(j = 0; j < N; ++j)
 #define forjd(N) for(int j = 0; j < N; ++j)
-typedef unsigned long long ull;
-typedef long long ll;
 
 using namespace std;
 
@@ -30,5 +27,41 @@ struct pto
 
 int main()
 {
-    return 0;
+    int n;
+    cin >> n;
+    int a = n/2;
+    int d = 1;
+    bool inv = false;
+    for (int j = 0; j < n; ++j)
+    {
+        for (int i = 0; i < a; ++i)
+            cout << '*';
+        for (int i = 0; i < d; ++i)
+            cout << 'D';
+        for (int i = 0; i < a; ++i)
+            cout << '*';
+        if (!inv)
+        {
+        if (a >= 0)
+        {
+            a-=1;
+            if (a == 0)
+                inv = true;
+            d+=2;
+        }
+        }
+        else
+        {
+            a+=1;
+            d-=2;
+        }
+        cout << endl;
+    }
 }
+
+
+
+
+
+
+

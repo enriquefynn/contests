@@ -30,5 +30,19 @@ struct pto
 
 int main()
 {
+    ull ve[300005];
+    int n;
+    cin >> n;
+    ll c = 0;
+    for(int i = 1; i <= n; ++i)
+    {
+        cin >> ve[i];
+        c+= ve[i];
+    }
+    sort(ve+1, ve+n+1, greater<int>());
+    for (int i = 2; i <= n; ++i)
+        c+= ve[i]*(n - i+1);
+    c+= ve[1]*(n-1);
+    cout << c << endl;
     return 0;
 }

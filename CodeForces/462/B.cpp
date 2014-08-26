@@ -30,5 +30,35 @@ struct pto
 
 int main()
 {
+    char a;
+    ull alp[30];
+    for (int i = 0; i < 30; ++i)
+        alp[i] = 0;
+    ull n, k;
+    cin >> n >> k;
+    forid(n)
+    {
+        cin >> a;
+        ++alp[a-'A'];
+        if (alp[a-'A'] > k)
+            alp[a-'A'] = k;
+    }
+    int j = 0;
+    ull cards = 0;
+    ull points = 0;
+    while(cards != k)
+    {
+        for (int i = 0; i < 30; ++i)
+        {
+            if (alp[i] > alp[j])
+                j = i;
+        }
+        if (alp[j] + cards > k)
+            alp[j] = k - cards;
+        cards += alp[j];
+        points += alp[j]*alp[j];
+        alp[j] = 0;
+    }
+    cout << points << endl;
     return 0;
 }
