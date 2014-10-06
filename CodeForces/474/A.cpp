@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <vector>
 #include <algorithm>
 #include <map>
@@ -11,6 +12,8 @@
 #define forid(N) for(int i = 0; i < N; ++i)
 #define forj(N) for(j = 0; j < N; ++j)
 #define forjd(N) for(int j = 0; j < N; ++j)
+typedef unsigned long long ull;
+typedef long long ll;
 
 using namespace std;
 
@@ -27,15 +30,23 @@ struct pto
 
 int main()
 {
-	int a, b, c;
-	while(cin >> a >> b >> c)
-	{
-		int ans =  (a*b*c)/(abs(c - a));
-		cout << ans << " pagina";
-		if (ans == 1)
-			cout << endl;
-		else
-			cout << "s\n";
-
-	}
+    const string s = "qwertyuiopasdfghjkl;zxcvbnm,./";
+    map<char, char> mr;
+    map<char, char> ml;
+    for (int i = 1; i < s.size(); ++i)
+        mr[s[i]] = s[i-1];
+    for (int i = 0; i < s.size()-1; ++i)
+        ml[s[i]] = s[i+1];
+    char c;
+    string ss;
+    cin >> c;
+    cin >> ss;
+    if (c == 'R')
+        forid(ss.size())
+            ss[i] = mr[ss[i]];
+    else if (c == 'L')
+        forid(ss.size())
+            ss[i] = ml[ss[i]];
+    cout << ss << endl;
+    return 0;
 }

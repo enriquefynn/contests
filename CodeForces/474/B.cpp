@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <vector>
 #include <algorithm>
 #include <map>
@@ -11,6 +12,8 @@
 #define forid(N) for(int i = 0; i < N; ++i)
 #define forj(N) for(j = 0; j < N; ++j)
 #define forjd(N) for(int j = 0; j < N; ++j)
+typedef unsigned long long ull;
+typedef long long ll;
 
 using namespace std;
 
@@ -27,51 +30,29 @@ struct pto
 
 int main()
 {
-	int n, v, V;
-	bool f;
-	while(1)
-	{
-		f = false;
-		cin >> n >> V;
-		if (!n && !V)
-			break;
-		int aum;
-		for (int j = V; j > 0; --j) {
-		v = j;
-		aum = 0;
-		for (int i = v; i <= n; i+=v)
-		{
-			++aum;
-			if (aum == v)
-			{
-				--v;
-				aum = 0;
-			}
-			if (n == i)
-			{
-				f = true;
-				goto end;
-			}
-			if (v == 0)
-				break;
-		}
-		}
-end:	if (f) cout << "possivel\n";
-		else cout << "impossivel\n";
-	}
-		return 0;
+    map<int, int> m;
+    int n, p;
+    cin >> n;
+    int k = 1;
+    int l = 1;
+    int g = -1;
+    forid(n)
+    {
+        cin >> p;
+        if (g == -1)
+            g = p;
+        else
+            g+= p;
+        for (int j = k; j <= g; ++j)
+            m[j] = l;
+        ++l;
+        k = g+1;
+    }
+    cin >> k;
+    forid(k)
+    {
+        cin >> g;
+        cout << m[g] << endl;
+    }
+    return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
